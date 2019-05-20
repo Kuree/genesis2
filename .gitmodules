@@ -1,0 +1,3 @@
+[submodule "Genesis2"]
+	path = Genesis2
+	url = https://github.com/StanfordVLSI/Genesis2.git
