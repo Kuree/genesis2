@@ -12,6 +12,8 @@ import glob
 GENESIS2_PATH = os.path.join(os.path.dirname(__file__),
                              "Genesis2")
 
+GENESIS2_REPO = "https://github.com/StanfordVLSI/Genesis2"
+
 class Genesis2Extension(Extension):
     def __init__(self, name, sourcedir=''):
         Extension.__init__(self, name, sources=[])
@@ -21,8 +23,7 @@ class Genesis2Extension(Extension):
 class Genesis2Build(build_ext):
     def run(self):
         if not os.path.isdir(GENESIS2_PATH):
-            subprocess.check_call(["git", "submodule", "update", "--init",
-                                   "--recursive"])
+            subprocess.check_call(["git", "clone", GENESIS2_REPO])
 
         # we only have one extension
         assert len(self.extensions) == 1
@@ -39,13 +40,16 @@ class Genesis2Build(build_ext):
         gui_folder = os.path.join(GENESIS2_PATH, "Genesis2Tools", "gui")
         if os.path.isdir(gui_folder):
             shutil.rmtree(gui_folder)
-        shutil.copytree(GENESIS2_PATH, extdir, symlinks=True, ignore_dangling_symlinks=True)
+        shutil.copytree(GENESIS2_PATH, extdir)
         shutil.rmtree(os.path.join(extdir,
                                    "Genesis2Tools/PerlLibs/ExtrasForOldPerlDistributions/Compress"))
 
 setup(
     name='genesis2',
-    version='0.0.1',
+    version='0.0.2',
+    packages=[
+        "genesis2"
+    ],
     author='Keyi Zhang',
     author_email='keyi@cs.stanford.edu',
     description='Python wrapper for Genesis2',
