@@ -11,6 +11,7 @@ PERL_LIB_VAR = "PERL5LIB"
 
 GENESIS_HOME = os.path.join(os.path.abspath(os.path.dirname(os.path.dirname(genesis2.__file__))),
                             "Genesis2-src", "Genesis2Tools")
+os.environ["GENESIS_HOME"] = GENESIS_HOME
 genesis_path = os.path.join(GENESIS_HOME, "bin", "Genesis2.pl")
 perl_path = os.path.join(GENESIS_HOME, "PerlLibs", "ExtrasForOldPerlDistributions")
 args = " ".join(sys.argv[1:])
