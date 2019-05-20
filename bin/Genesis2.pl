@@ -15,4 +15,4 @@ os.environ["GENESIS_HOME"] = GENESIS_HOME
 genesis_path = os.path.join(GENESIS_HOME, "bin", "Genesis2.pl")
 perl_path = os.path.join(GENESIS_HOME, "PerlLibs", "ExtrasForOldPerlDistributions")
 args = " ".join(sys.argv[1:])
-os.system(PERL_LIB_VAR + "=" + perl_path + ":${" + PERL_LIB_VAR + "} " + genesis_path + args)
+os.system(PERL_LIB_VAR + "=" + perl_path + ":${" + PERL_LIB_VAR + "} " + genesis_path + " " + args)

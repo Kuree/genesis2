@@ -46,7 +46,7 @@ class Genesis2Build(build_ext):
 
 setup(
     name='genesis2',
-    version='0.0.3',
+    version='0.0.4',
     packages=[
         "genesis2"
     ],
