@@ -41,12 +41,10 @@ class Genesis2Build(build_ext):
         if os.path.isdir(gui_folder):
             shutil.rmtree(gui_folder)
         shutil.copytree(GENESIS2_PATH, extdir)
-        shutil.rmtree(os.path.join(extdir,
-                                   "Genesis2Tools/PerlLibs/ExtrasForOldPerlDistributions/Compress"))
 
 setup(
     name='genesis2',
-    version='0.0.5',
+    version='0.0.6',
     packages=[
         "genesis2"
     ],
